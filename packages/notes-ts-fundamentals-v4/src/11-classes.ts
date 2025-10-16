@@ -2,62 +2,82 @@
 
 //? Field types
 class Car {
+  // ? static member fields
+
+  static #nextSerialNumber: number
+  static #generateSerialNumber() {
+    return this.#nextSerialNumber++
+  }
+  // setup stuff for class itself
+  static {
+    // `this` is the static scope
+    fetch('https://api.example.com/vin_number_data')
+      .then((response) => response.json())
+      .then((data) => {
+        this.#nextSerialNumber = data.mostRecentInvoiceId + 1
+      })
+  }
+
   make: string
   model: string
   year: number
+  // serialNumber = Car.generateSerialNumber()
+
+  readonly #serialNumber = Car.#generateSerialNumber()
+  protected get serialNumber(): number {
+    return this.#serialNumber
+  }
+
+  // setup stuff for class instance
   constructor(make: string, model: string, year: number) {
     this.make = make
     this.model = model
     //     ^?
     this.year = year
   }
+  honk(duration: number): string {
+    return `h${'o'.repeat(duration)}nk`
+  }
+  getLabel() {
+    return `${this.make} ${this.model} ${this.year} - #${this.serialNumber}`
+  }
+  equals(other: unknown) {
+    if (
+      other &&
+      typeof other === 'object' &&
+      #serialNumber in other
+    ) {
+      other
+      //       ^?
+      return other.#serialNumber === this.#serialNumber
+    }
+    return false
+  }
 }
 
 let sedan = new Car('Honda', 'Accord', 2017)
-// sedan.activateTurnSignal("left") //! not safe!
-// new Car(2017, "Honda", "Accord") //! not safe!
+sedan.activateTurnSignal('left') //! not safe!
+new Car(2017, 'Honda', 'Accord') //! not safe!
 
-/*
 //? method types
-// honk(duration: number): string {
-//     return `h${'o'.repeat(duration)}nk`;
-//  }
-// const c = new Car("Honda", "Accord", 2017);
-// c.honk(5); // "hooooonk"
 
-/*
-//? static member fields
-// static nextSerialNumber = 100
-// static generateSerialNumber() { return this.nextSerialNumber++ }
-// getLabel() {
-// return `${this.make} ${this.model} ${this.year} - #${this.serialNumber}`
-// }
+const c = new Car('Honda', 'Accord', 2017)
+c.honk(5) // "hooooonk"
 
-// console.log( new Car("Honda", "Accord", 2017))
-// // > "Honda Accord 2017 - #100
-// console.log( new Car("Toyota", "Camry", 2022))
-// // > "Toyota Camry 2022 - #101
+console.log(new Car('Honda', 'Accord', 2017))
+// > "Honda Accord 2017 - #100
+console.log(new Car('Toyota', 'Camry', 2022))
+// > "Toyota Camry 2022 - #101
 
-/*
 //? static blocks
-// static {
-//     // `this` is the static scope
-//     fetch("https://api.example.com/vin_number_data")
-//         .then(response => response.json())
-//         .then(data => {
-//             this.nextSerialNumber = data.mostRecentInvoiceId + 1;
-//         })
-// }
+
 // serialNumber = Car.generateSerialNumber()
 
 //* Access modifier keywords
-/*
+
 //? on member fields
-// private _serialNumber = Car.generateSerialNumber()
-// protected get serialNumber() {
-//   return this._serialNumber
-// }
-// const s = new Sedan("Nissan", "Altima", 2020)
+
+const s = new Sedan('Nissan', 'Altima', 2020)
 // s.serialNumber
 
 /*
@@ -70,7 +90,7 @@ let sedan = new Car('Honda', 'Accord', 2017)
 /*
 //? member fields
 // #serialNumber = Car.generateSerialNumber()
-// c.#serialNumber
+c.#serialNumber
 
 /*
 //? static fields
@@ -80,16 +100,7 @@ let sedan = new Car('Honda', 'Accord', 2017)
 
 //* Private field presence checks
 /*
-// equals(other: unknown) {
-//     if (other &&
-//       typeof other === 'object' &&
-//       #serialNumber in other) {
-//         other
-// //       ^?
-//         return other.#serialNumber = this.#serialNumber
-//       }
-//       return false
-//   }
+
 // const c2 = c1
 // c2.equals(c1)
 
