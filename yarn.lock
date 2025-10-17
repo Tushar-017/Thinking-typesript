@@ -3152,7 +3152,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/preset-typescript": ^7.23.2
-    "@types/node": ^22.15.8
+    "@types/node": ^24.8.1
     core-js: ^3.33.0
     markdownlint-cli: ^0.37.0
     replace-in-file: ^7.0.1
@@ -5433,7 +5433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.15.8":
+"@types/node@npm:*":
   version: 22.15.8
   resolution: "@types/node@npm:22.15.8"
   dependencies:
@@ -5458,12 +5458,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.7":
-  version: 20.17.40
-  resolution: "@types/node@npm:20.17.40"
+"@types/node@npm:^24.8.1":
+  version: 24.8.1
+  resolution: "@types/node@npm:24.8.1"
   dependencies:
-    undici-types: ~6.19.2
-  checksum: 513484917aa87c84ec77d08941ad368aa59c69377f68c8998c83c7c33fcea72210229ef96dab2d8aae42d4e4a700089af6a078308dc0e4fb6c9fb418aee4fc52
+    undici-types: ~7.14.0
+  checksum: 55fca8f900a017c207e4e413956f3fdd17178c3d5ffc8fd4bb7b0b5136865ca06076b1335e1e5e6f3269cace491dc1f4ecc1ab4410ff4acf25c9087585560c86
   languageName: node
   linkType: hard
 
@@ -24727,11 +24727,11 @@ __metadata:
 
 "typescript@patch:typescript@>3#~builtin<compat/typescript>, typescript@patch:typescript@~5.8.0#~builtin<compat/typescript>":
   version: 5.8.3
-  resolution: "typescript@patch:typescript@npm%3A5.8.3#~builtin<compat/typescript>::version=5.8.3&hash=29ae49"
+  resolution: "typescript@patch:typescript@npm%3A5.8.3#~builtin<compat/typescript>::version=5.8.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1b503525a88ff0ff5952e95870971c4fb2118c17364d60302c21935dedcd6c37e6a0a692f350892bafcef6f4a16d09073fe461158547978d2f16fbe4cb18581c
+  checksum: f1743b6850976b3debf7cbd53d2bc0b67e75d47eb6410db564c8bb475e92a8a48f8a3fcd14d89cf93426835281c31a8f8a94dad90be4dc899279a898532ba97f
   languageName: node
   linkType: hard
 
@@ -24817,17 +24817,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.19.2":
-  version: 6.19.8
-  resolution: "undici-types@npm:6.19.8"
-  checksum: de51f1b447d22571cf155dfe14ff6d12c5bdaec237c765085b439c38ca8518fc360e88c70f99469162bf2e14188a7b0bcb06e1ed2dc031042b984b0bb9544017
-  languageName: node
-  linkType: hard
-
 "undici-types@npm:~6.21.0":
   version: 6.21.0
   resolution: "undici-types@npm:6.21.0"
   checksum: 46331c7d6016bf85b3e8f20c159d62f5ae471aba1eb3dc52fff35a0259d58dcc7d592d4cc4f00c5f9243fa738a11cfa48bd20203040d4a9e6bc25e807fab7ab3
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~7.14.0":
+  version: 7.14.0
+  resolution: "undici-types@npm:7.14.0"
+  checksum: bd28cb36b33a51359f02c27b84bfe8563cdad57bdab0aa6ac605ce64d51aff49fd0aa4cb2d3b043caaa93c3ec42e96b5757df5d2d9bcc06a5f3e71899c765035
   languageName: node
   linkType: hard
 
@@ -25794,7 +25794,7 @@ __metadata:
     "@testing-library/cypress": ^10.0.1
     "@types/jest": ^27.5.2
     "@types/lodash": ^4.14.199
-    "@types/node": ^20.8.7
+    "@types/node": ^24.8.1
     "@types/pkg-up": ^3.1.0
     "@types/react": 17.0.68
     "@types/react-dom": 17.0.22
