@@ -18,9 +18,6 @@ class Car {
       })
   }
 
-  make: string
-  model: string
-  year: number
   // serialNumber = Car.generateSerialNumber()
 
   readonly #serialNumber = Car.#generateSerialNumber()
@@ -29,12 +26,11 @@ class Car {
   }
 
   // setup stuff for class instance
-  constructor(make: string, model: string, year: number) {
-    this.make = make
-    this.model = model
-    //     ^?
-    this.year = year
-  }
+  constructor(
+    public make: string,
+    public model: string,
+    public year: number,
+  ) {}
   honk(duration: number): string {
     return `h${'o'.repeat(duration)}nk`
   }
@@ -80,39 +76,36 @@ console.log(new Car('Toyota', 'Camry', 2022))
 const s = new Sedan('Nissan', 'Altima', 2020)
 // s.serialNumber
 
-/*
 //? on static fields
 // private static nextSerialNumber: number
 // private static generateSerialNumber() { return this.nextSerialNumber++ }
 // Car.generateSerialNumber()
 
 //* JS private #fields
-/*
+
 //? member fields
 // #serialNumber = Car.generateSerialNumber()
 c.#serialNumber
 
-/*
 //? static fields
 // static #nextSerialNumber: number
 // static #generateSerialNumber() { return this.#nextSerialNumber++ }
 // #serialNumber = Car.#generateSerialNumber()
 
 //* Private field presence checks
-/*
 
 // const c2 = c1
 // c2.equals(c1)
 
 //* readonly
-/*
+
 // readonly #serialNumber = Car.#generateSerialNumber()
 // changeSerialNumber(num: number) {
 //     this.#serialNumber = num
 // }
 
 //* Parameter properties
-/*
+
 // constructor(
 //     public make: string,
 //     public model: string,
@@ -131,15 +124,15 @@ c.#serialNumber
 
 //* Overrides
 
-/*
-// class Truck extends Car {
-//     hoonk() { // OOPS!
-//         console.log("BEEP")
-//     }
-// }
+class Truck extends Car {
+  hoonk() {
+    // OOPS!
+    console.log('BEEP')
+  }
+}
 
-// const t = new Truck("Ford", "F-150", 2020);
-// t.honk(); // "beep"
+const t = new Truck('Ford', 'F-150', 2020)
+t.honk() // "beep"
 
 //? override keyword
 // override hoonk() { // OOPS!
