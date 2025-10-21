@@ -51,7 +51,7 @@
     "postcss-purgecss": "^5.0.0",
     "prettier": "^3.0.3",
     "react-test-renderer": "18.2.0",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^4.1.15",
     "tsd": "^0.29.0",
     "typescript": "~5.8.0"
   },
